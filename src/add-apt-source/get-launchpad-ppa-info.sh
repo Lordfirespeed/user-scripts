@@ -24,10 +24,12 @@ IFS=$'\n' read -rd '' \
 export source_readable_name="$ppa_displayname"
 export source_types="deb deb-src"
 export source_uris="https://ppa.launchpadcontent.net/$owner_slug/$repo_slug/ubuntu"
-export source_suites="$(lsb_release -cs)"
+source_suites="$(lsb_release -cs)"
+export source_suites
 export source_components="main"
 export source_architectures="amd64"
 export source_pin_selector="release o=LP-PPA-$owner_slug-$repo_slug"
 rm $ppa_metadata_file
 
-export source_signing_key="$(Import_Signing_Key_From_Keyserver "$ppa_signing_key_fingerprint")"
+source_signing_key="$(Import_Signing_Key_From_Keyserver "$ppa_signing_key_fingerprint")"
+export source_signing_key

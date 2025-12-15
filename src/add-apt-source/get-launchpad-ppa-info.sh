@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# https://stackoverflow.com/a/77663806/11045433
-script_dirname=$(dirname "$( readlink -f "${BASH_SOURCE[0]:-"$( command -v -- "$0" )"}" )")
+# Defined in my Obsidian vault
+code_source_dirname="$(get_script_nth_dirname 2)"
 
 if [[ ! $(type -t Import_Signing_Key_From_Keyserver) == function ]]; then
-  source "$script_dirname/import-signing-keys.sh"
+  source "$code_source_dirname/add-apt-source/import-signing-keys.sh"
 fi
 
 owner_slug=${1:?missing owner_slug argument}

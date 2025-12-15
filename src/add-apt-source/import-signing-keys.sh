@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# https://stackoverflow.com/a/77663806/11045433
-script_dirname=$(dirname "$( readlink -f "${BASH_SOURCE[0]:-"$( command -v -- "$0" )"}" )")
+# Defined in my Obsidian vault
+code_source_dirname="$(get_script_nth_dirname 2)"
 
 if [[ ! $(type -t Maybe_Sudo) == function ]]; then
-  source "$script_dirname/maybe-sudo.sh"
+  source "$code_source_dirname/maybe-sudo.sh"
 fi
 
 function Import_Signing_Key_From_Keyserver {
@@ -19,7 +19,7 @@ function Import_Signing_Key_From_Keyserver {
     --keyserver "$key_server" \
     --recv-keys "$key_fingerprint"
 
-  key_slug="$(gpg --show-keys "$temp_keyring" | python3 "$script_dirname/extract_key_slug.py")"
+  key_slug="$(gpg --show-keys "$temp_keyring" | python3 "$code_source_dirname/add-apt-source/extract_key_slug.py")"
   key_destination="$key_destination_dir/$key_slug.gpg"
 
   Maybe_Sudo mkdir -p "$key_destination_dir"

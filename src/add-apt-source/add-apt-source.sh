@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# https://stackoverflow.com/a/77663806/11045433
-script_dirname=$(dirname "$( readlink -f "${BASH_SOURCE[0]:-"$( command -v -- "$0" )"}" )")
+# Defined in my Obsidian vault
+code_source_dirname="$(get_script_nth_dirname 2)"
 
 if [[ ! $(type -t Maybe_Sudo) == function ]]; then
-  source "$script_dirname/maybe-sudo.sh"
+  source "$code_source_dirname/maybe-sudo.sh"
 fi
 
 declare -a required_variables=(

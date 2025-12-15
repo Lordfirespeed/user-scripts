@@ -29,7 +29,7 @@ export source_suites
 export source_components="main"
 export source_architectures="amd64"
 export source_pin_selector="release o=LP-PPA-$owner_slug-$repo_slug"
-rm $ppa_metadata_file
+rm "$ppa_metadata_file"
 
 source_signing_key="$(Import_Signing_Key_From_Keyserver "$ppa_signing_key_fingerprint")"
 export source_signing_key

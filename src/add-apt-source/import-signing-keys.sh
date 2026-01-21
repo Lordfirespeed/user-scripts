@@ -30,8 +30,8 @@ function Import_Signing_Key_From_Keyserver {
 export -f Import_Signing_Key_From_Keyserver
 
 function Import_Signing_Key_From_Url {
-  key_url="https://packages.lunarg.com/lunarg-signing-key-pub.asc"
-  key_slug="lunarg-vulkan"
+  key_url=${1:?missing key_url argument}
+  key_slug=${2:?missing key_slug argument}
   key_destination_dir="/usr/share/keyrings"
 
   temp_keyring=$(mktemp -t XXXXXX.gpg)
